@@ -37,8 +37,8 @@ class UsefulFoot extents HTMLElement {
       list.appendChild(li);
     });
 
+    shadow.appendChild(footer);
     footer.appendChild(list);
-    document.body.appendChild(footer);
   }
 
   connectedCallback() {}
