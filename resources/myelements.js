@@ -1,4 +1,6 @@
 // Create Elements
+import bootstrap from './bootstrap.js'
+
 class UsefulFoot extends HTMLElement {
   static observedAttributes = ["footerClass"];
   
@@ -7,10 +9,10 @@ class UsefulFoot extends HTMLElement {
     const shadow = this.attachShadow({ mode: "open" });
     
     const footer = document.createElement("footer");
-    footer.class = 'py-3 my-4 mt-auto';
+    footer.className = 'py-3 my-4 mt-auto';
 
     const list = document.createElement("ul");
-    list.class = 'nav justify-content-center border-bottom pb-3 mb-3';
+    list.className = 'nav justify-content-center border-bottom pb-3 mb-3';
 
     const listElements = [
       { href: '#!', iconClass: 'bi bi-facebook' },
@@ -22,15 +24,15 @@ class UsefulFoot extends HTMLElement {
 
     listElements.forEach(link => {
       const li = document.createElement('li');
-      li.class = 'nav-item';
+      li.className = 'nav-item';
 
       const a = document.createElement('a');
-      a.class = 'btn btn-outline-light btn-floating m-1 socialbutton';
+      a.className = 'btn btn-outline-light btn-floating m-1 socialbutton';
       a.href = link.href;
       a.role = 'button';
 
       const icon = document.createElement("i");
-      icon.class = link.iconClass;
+      icon.className = link.iconClass;
 
       a.appendChild(icon);
       li.appendChild(a);
@@ -39,7 +41,7 @@ class UsefulFoot extends HTMLElement {
 
     const copyright = document.createElement("small");
     copyright.textContent = "© 2024 Kara Wilson"
-    copyright.class = 'text-center text-body-secondary';
+    copyright.className = 'text-center text-body-secondary';
 
     shadow.appendChild(footer);
     footer.appendChild(list);
