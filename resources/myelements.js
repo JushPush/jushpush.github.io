@@ -111,12 +111,12 @@ class CoolHeader extends HTMLElement {
       { text: 'About', href: '/about', active: false },
     ];
 
-    switch (active) {
+    /*switch (this.active) {
       case 0: navItems[0].active = true; break;
       case 1: navItems[1].active = true; break;
       case 2: navItems[2].active = true; break;
       default: break;
-    }
+    }*/
 
     navItems.forEach(item => {
       const listItem = document.createElement('li');
@@ -142,7 +142,7 @@ class CoolHeader extends HTMLElement {
     headerContainer.className = 'container-fluid header';
 
     const headerTitle = document.createElement('h1');
-    headerTitle.textContent = title;
+    headerTitle.textContent = this.textContent;
     headerContainer.appendChild(headerTitle);
 
     container.appendChild(navbar);
