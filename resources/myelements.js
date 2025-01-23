@@ -39,11 +39,10 @@ class UsefulFoot extends HTMLElement {
       list.appendChild(li);
     });
 
-    const copyright = document.createElement("small");
+    const copyright = document.createElement("p");
     copyright.textContent = "© 2024 Kara Wilson"
     copyright.className = 'text-center text-body-secondary';
 
-    //shadow.appendChild(footer);
     document.body.appendChild(footer);
     footer.appendChild(list);
     footer.appendChild(copyright);
