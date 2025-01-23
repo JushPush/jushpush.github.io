@@ -60,9 +60,6 @@ class UsefulFoot extends HTMLElement {
 class CoolHeader extends HTMLElement {
   static observedAttributes = ['title', 'active']
 
-  let active = 0;
-  let title = '';
-
   constructor() {
     super()
     this.attachShadow({ mode: 'open' });
@@ -115,9 +112,10 @@ class CoolHeader extends HTMLElement {
     ];
 
     switch (active) {
-      case '0': navItems[0].active = true; break;
-      case '1': navItems[1].active = true; break;
-      case '2': navItems[2].active = true; break;
+      case 0: navItems[0].active = true; break;
+      case 1: navItems[1].active = true; break;
+      case 2: navItems[2].active = true; break;
+      default: break;
     }
 
     navItems.forEach(item => {
@@ -183,8 +181,8 @@ class CoolHeader extends HTMLElement {
 
   attributeChangedCallback(name, oldValue, newValue) {
     switch (name) {
-      case "title": title = newValue;break;
-      case "active": active = newValue;break;
+      case "title": this.title = newValue;break;
+      case "active": this.active = parseInt(newValue);break;
       default:break;
     }
   }
