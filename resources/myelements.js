@@ -61,6 +61,7 @@ class Header extends HTMLElement {
   static observedAttributes = ['title']
   constructor() {
     super()
+    this.attachShadow({ mode: 'open' });
     const container = document.createElement('div');
     container.className = 'pageHead';
 
