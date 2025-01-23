@@ -163,9 +163,12 @@ class CoolHeader extends HTMLElement {
       }
     `;
 
-    this.shadowRoot.innerHTML = '';
-    this.shadowRoot.appendChild(style);
-    this.shadowRoot.appendChild(container);
+    //this.shadowRoot.innerHTML = '';
+    //this.shadowRoot.appendChild(style);
+    //this.shadowRoot.appendChild(container);
+    //document.body.appendChild(style);
+    document.body.appendChild(container);
+
   }
 }
 
