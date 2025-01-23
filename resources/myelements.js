@@ -57,7 +57,7 @@ class UsefulFoot extends HTMLElement {
   attributeChangedCallback() {}
 }
 
-class Header extends HTMLElement {
+class CoolHeader extends HTMLElement {
   static observedAttributes = ['title']
   constructor() {
     super()
@@ -170,4 +170,4 @@ class Header extends HTMLElement {
 }
 
 customElements.define("useful-foot", UsefulFoot);
-customElements.define("header", Header);
+customElements.define("cool-header", CoolHeader);
