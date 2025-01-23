@@ -58,7 +58,11 @@ class UsefulFoot extends HTMLElement {
 }
 
 class CoolHeader extends HTMLElement {
-  static observedAttributes = ['title']
+  static observedAttributes = ['title', 'active']
+
+  number active = 0;
+  string title = '';
+
   constructor() {
     super()
     this.attachShadow({ mode: 'open' });
@@ -105,10 +109,16 @@ class CoolHeader extends HTMLElement {
     navList.className = 'navbar-nav me-auto mb-2 mb-lg-0';
 
     const navItems = [
-      { text: 'Home', href: '/', active: true },
+      { text: 'Home', href: '/', active: false },
       { text: 'Projects', href: '/projects', active: false },
       { text: 'About', href: '/about', active: false },
     ];
+
+    switch (active) {
+      case '0': navItems[0].active = true; break;
+      case '1': navItems[1].active = true; break;
+      case '2': navItems[2].active = true; break;
+    }
 
     navItems.forEach(item => {
       const listItem = document.createElement('li');
@@ -134,7 +144,7 @@ class CoolHeader extends HTMLElement {
     headerContainer.className = 'container-fluid header';
 
     const headerTitle = document.createElement('h1');
-    headerTitle.textContent = 'About';
+    headerTitle.textContent = title;
     headerContainer.appendChild(headerTitle);
 
     container.appendChild(navbar);
@@ -169,6 +179,14 @@ class CoolHeader extends HTMLElement {
     //document.body.appendChild(style);
     document.body.appendChild(container);
 
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    switch (name) {
+      case "title": title = newValue;break;
+      case "active": active = newValue;break;
+      default:break;
+    }
   }
 }
 
