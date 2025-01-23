@@ -60,8 +60,8 @@ class UsefulFoot extends HTMLElement {
 class CoolHeader extends HTMLElement {
   static observedAttributes = ['title', 'active']
 
-  number active = 0;
-  string title = '';
+  let active = 0;
+  let title = '';
 
   constructor() {
     super()
