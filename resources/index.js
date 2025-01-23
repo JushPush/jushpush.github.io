@@ -24,6 +24,10 @@ function toggleTheme() {
       element.dataset.bsTheme == "light" ? "dark" : "light";
 }
 
+function cycleImage() {
+    // cycle between banner images, KEEP READABILITY do NOT ruin the look of it because users can't read the page.
+}
+
 $( document ).ready(function() {
     getUser();
 

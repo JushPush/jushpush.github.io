@@ -1,5 +1,8 @@
 //import bootstrap from './bootstrap.js';
 
+const styles = {
+};
+
 // Create Elements
 class UsefulFoot extends HTMLElement {
   static observedAttributes = ["footerClass"];
@@ -48,12 +51,122 @@ class UsefulFoot extends HTMLElement {
     footer.appendChild(copyright);
   }
 
-  connectedCallback() {console.log("heyyy");}
+  connectedCallback() {}
   disconnectedCallback() {}
   adoptedCallback() {}
   attributeChangedCallback() {}
+}
 
-  
+class Header extends HTMLElement {
+  static observedAttributes = ['title']
+  constructor() {
+    super()
+    const container = document.createElement('div');
+    container.className = 'pageHead';
+
+    const navbar = document.createElement('nav');
+    navbar.className = 'navbar navbar-expand-sm';
+
+    const navbarContainer = document.createElement('div');
+    navbarContainer.className = 'container-fluid';
+
+    const navbarBrand = document.createElement('a');
+    navbarBrand.className = 'navbar-brand';
+    navbarBrand.href = '#';
+
+    const brandDiv = document.createElement('div');
+    const brandImg = document.createElement('img');
+    brandImg.id = 'git-user-id';
+    const brandText = document.createTextNode(' JushPush');
+
+    brandDiv.appendChild(brandImg);
+    brandDiv.appendChild(brandText);
+    navbarBrand.appendChild(brandDiv);
+
+    const toggleButton = document.createElement('button');
+    toggleButton.className = 'navbar-toggler';
+    toggleButton.type = 'button';
+    toggleButton.setAttribute('data-bs-toggle', 'collapse');
+    toggleButton.setAttribute('data-bs-target', '#navbarSupportedContent');
+    toggleButton.setAttribute('aria-controls', 'navbarSupportedContent');
+    toggleButton.setAttribute('aria-expanded', 'false');
+    toggleButton.setAttribute('aria-label', 'Toggle navigation');
+
+    const toggleIcon = document.createElement('span');
+    toggleIcon.className = 'navbar-toggler-icon';
+    toggleButton.appendChild(toggleIcon);
+
+    const collapseDiv = document.createElement('div');
+    collapseDiv.className = 'collapse navbar-collapse';
+    collapseDiv.id = 'navbarSupportedContent';
+
+    const navList = document.createElement('ul');
+    navList.className = 'navbar-nav me-auto mb-2 mb-lg-0';
+
+    const navItems = [
+      { text: 'Home', href: '/', active: true },
+      { text: 'Projects', href: '/projects', active: false },
+      { text: 'About', href: '/about', active: false },
+    ];
+
+    navItems.forEach(item => {
+      const listItem = document.createElement('li');
+      listItem.className = `nav-item${item.active ? ' active' : ''}`;
+
+      const link = document.createElement('a');
+      link.className = 'nav-link';
+      link.href = item.href;
+      link.textContent = item.text;
+
+      listItem.appendChild(link);
+      navList.appendChild(listItem);
+    });
+
+    collapseDiv.appendChild(navList);
+
+    navbarContainer.appendChild(navbarBrand);
+    navbarContainer.appendChild(toggleButton);
+    navbarContainer.appendChild(collapseDiv);
+    navbar.appendChild(navbarContainer);
+
+    const headerContainer = document.createElement('div');
+    headerContainer.className = 'container-fluid header';
+
+    const headerTitle = document.createElement('h1');
+    headerTitle.textContent = 'About';
+    headerContainer.appendChild(headerTitle);
+
+    container.appendChild(navbar);
+    container.appendChild(headerContainer);
+
+    const style = document.createElement('style');
+    style.textContent = `
+      .pageHead {
+        font-family: Arial, sans-serif;
+      }
+      .navbar {
+        background-color: #f8f9fa;
+      }
+      .navbar-brand div {
+        display: flex;
+        align-items: center;
+      }
+      .navbar-brand img {
+        width: 30px;
+        height: 30px;
+        margin-right: 8px;
+      }
+      .header {
+        text-align: center;
+        margin-top: 20px;
+      }
+    `;
+
+    this.shadowRoot.innerHTML = '';
+    this.shadowRoot.appendChild(style);
+    this.shadowRoot.appendChild(container);
+  }
 }
 
 customElements.define("useful-foot", UsefulFoot);
+customElements.define("header", Header);
