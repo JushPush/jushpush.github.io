@@ -1,6 +1,6 @@
-// Create Elements
-import bootstrap from './bootstrap.js'
+import bootstrap from './bootstrap.js';
 
+// Create Elements
 class UsefulFoot extends HTMLElement {
   static observedAttributes = ["footerClass"];
   
