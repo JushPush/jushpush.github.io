@@ -37,8 +37,13 @@ class UsefulFoot extends HTMLElement {
       list.appendChild(li);
     });
 
+    const copyright = document.createElement("small");
+    copyright.textContent = "© 2024 Kara Wilson"
+    copyright.className = 'text-center text-body-secondary';
+
     shadow.appendChild(footer);
     footer.appendChild(list);
+    footer.appendChild(copyright);
   }
 
   connectedCallback() {console.log("heyyy");}
