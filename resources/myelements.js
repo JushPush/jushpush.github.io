@@ -1,5 +1,5 @@
 // Create Elements
-class UsefulFoot extents HTMLElement {
+class UsefulFoot extends HTMLElement {
   static observedAttributes = ["footerClass"];
   
   constructor() {
@@ -13,11 +13,11 @@ class UsefulFoot extents HTMLElement {
     list.className = 'nav justify-content-center border-bottom pb-3 mb-3';
 
     const listElements = [
-      { href '#!', iconClass: 'bi bi-facebook' },
-      { href '#!', iconClass: 'bi bi-twitter' },
-      { href '#!', iconClass: 'bi bi-instagram' },
-      { href '#!', iconClass: 'bi bi-linkedin' },
-      { href '#!', iconClass: 'bi bi-github' },
+      { href: '#!', iconClass: 'bi bi-facebook' },
+      { href: '#!', iconClass: 'bi bi-twitter' },
+      { href: '#!', iconClass: 'bi bi-instagram' },
+      { href: '#!', iconClass: 'bi bi-linkedin' },
+      { href: '#!', iconClass: 'bi bi-github' },
     ];
 
     listElements.forEach(link => {
