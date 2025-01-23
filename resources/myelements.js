@@ -41,7 +41,7 @@ class UsefulFoot extents HTMLElement {
     footer.appendChild(list);
   }
 
-  connectedCallback() {}
+  connectedCallback() {console.log("heyyy");}
   disconnectedCallback() {}
   adoptedCallback() {}
   attributeChangedCallback() {}
