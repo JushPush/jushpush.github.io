@@ -6,7 +6,7 @@ class UsefulFoot extends HTMLElement {
   
   constructor() {
     super();
-    const shadow = this.attachShadow({ mode: "open" });
+    //const shadow = this.attachShadow({ mode: "open" });
     
     const footer = document.createElement("footer");
     footer.className = 'py-3 my-4 mt-auto';
@@ -43,7 +43,8 @@ class UsefulFoot extends HTMLElement {
     copyright.textContent = "© 2024 Kara Wilson"
     copyright.className = 'text-center text-body-secondary';
 
-    shadow.appendChild(footer);
+    //shadow.appendChild(footer);
+    document.body.appendChild(footer);
     footer.appendChild(list);
     footer.appendChild(copyright);
   }
