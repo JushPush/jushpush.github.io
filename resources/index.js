@@ -25,19 +25,8 @@ function toggleTheme() {
       element.dataset.bsTheme == "light" ? "dark" : "light";
 }
 
-// picks a random banner for the page
-function cycleImage() {
-    // cycle between banner images, KEEP READABILITY do NOT ruin the look of it because users can't read the page.
-    const randomIndex = Math.floor(Math.random() * bannerFiles.length);
-    const banner = document.getElementById("banner");
-    if (banner)
-        banner.style.backgroundImage = `url('images/${bannerFiles[randomIndex]}')`;
-}
-
 $( document ).ready(function() {
     getUser();
-
-    cycleImage();
 
     document.body.className = "visible d-flex flex-column min-vh-100";
 });
