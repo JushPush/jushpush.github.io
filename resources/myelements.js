@@ -19,11 +19,10 @@ class UsefulFoot extends HTMLElement {
     list.className = 'nav justify-content-center border-bottom pb-3 mb-3';
 
     const listElements = [
-      { href: '#!', iconClass: 'bi bi-facebook' },
-      { href: '#!', iconClass: 'bi bi-twitter' },
-      { href: '#!', iconClass: 'bi bi-instagram' },
-      { href: '#!', iconClass: 'bi bi-linkedin' },
-      { href: '#!', iconClass: 'bi bi-github' },
+      { href: 'https://substack.com/@karawill', iconClass: 'bi bi-substack' },
+      { href: 'https://www.instagram.com/karawilsob/', iconClass: 'bi bi-instagram' },
+      { href: 'https://www.linkedin.com/in/kwilson04/', iconClass: 'bi bi-linkedin' },
+      { href: 'https://github.com/JushPush', iconClass: 'bi bi-github' },
     ];
 
     listElements.forEach(link => {
@@ -44,7 +43,7 @@ class UsefulFoot extends HTMLElement {
     });
 
     const copyright = document.createElement("p");
-    copyright.textContent = "© 2024 Kara Wilson"
+    copyright.textContent = "© 2025 Kara Wilson"
     copyright.className = 'text-center text-body-secondary';
 
     document.body.appendChild(footer);
