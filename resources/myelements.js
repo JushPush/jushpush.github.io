@@ -1,7 +1,8 @@
-//import bootstrap from './bootstrap.js';
-
 const styles = {
 };
+const bannerFiles = ["banner1.jpg", "banner2.jpg", "banner3.jpg", "banner4.jpg"]
+
+const pages = [ "projects", "about" ]
 
 // Create Elements
 class UsefulFoot extends HTMLElement {
@@ -61,10 +62,16 @@ class CoolHeader extends HTMLElement {
   static observedAttributes = ['title', 'active']
 
   constructor() {
-    super()
+    super();
     this.attachShadow({ mode: 'open' });
+  }
+  connectedCallback() {
     const container = document.createElement('div');
     container.className = 'pageHead';
+
+    const randomIndex = Math.floor(Math.random() * bannerFiles.length);
+    if (container)
+        container.style.backgroundImage = `url('images/${bannerFiles[randomIndex]}')`;
 
     const navbar = document.createElement('nav');
     navbar.className = 'navbar navbar-expand-sm';
@@ -111,12 +118,12 @@ class CoolHeader extends HTMLElement {
       { text: 'About', href: '/about', active: false },
     ];
 
-    /*switch (this.active) {
+    switch (this.getAttribute('active')) {
       case 0: navItems[0].active = true; break;
       case 1: navItems[1].active = true; break;
       case 2: navItems[2].active = true; break;
       default: break;
-    }*/
+    }
 
     navItems.forEach(item => {
       const listItem = document.createElement('li');
@@ -142,7 +149,8 @@ class CoolHeader extends HTMLElement {
     headerContainer.className = 'container-fluid header';
 
     const headerTitle = document.createElement('h1');
-    headerTitle.textContent = this.textContent;
+    headerTitle.textContent = this.getAttribute('title');
+    headerTitle.id = 'headerTitle';
     headerContainer.appendChild(headerTitle);
 
     container.appendChild(navbar);
@@ -175,16 +183,17 @@ class CoolHeader extends HTMLElement {
     //this.shadowRoot.appendChild(style);
     //this.shadowRoot.appendChild(container);
     //document.body.appendChild(style);
+    //this.shadowRoot.appendChild(container);
+    document.body.innerHTML = '';
     document.body.appendChild(container);
+  }
 
+  static get observedAttributes() {
+    return ['title', 'active'];
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    switch (name) {
-      case "title": this.title = newValue;break;
-      case "active": this.active = parseInt(newValue);break;
-      default:break;
-    }
+    this.connectedCallback();
   }
 }
 
