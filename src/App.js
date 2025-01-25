@@ -77,15 +77,12 @@ function App() {
           <h1>Portfolio</h1>
         </div>
       </div>
-      <BrowserRouter basename="/">
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/resume" element={<Resume />} />
-        <Route path="*" element={<PageNotFound />} />
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/projects" element={<Projects />} />
+        <Route exact path="/about" element={<About />} />
+        <Route exact path="/resume" element={<Resume />} />
       </Routes>
-      </BrowserRouter>
       <footer className='py-3 my-4 mt-auto'>
         <ul className='nav justify-content-center border-bottom pb-3 mb-3'>
           <li className='nav-item'><a href='https://substack.com/@karawill' className='btn btn-outline-light btn-floating m-1 socialbutton' role='button'><i className='bi bi-substack'></i></a></li>

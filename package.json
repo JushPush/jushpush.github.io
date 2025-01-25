@@ -1,8 +1,8 @@
 {
-  "homepage": "https://jushpush.github.io/",
   "name": "jushpush.github.io",
+  "homepage": "https://jushpush.github.io/",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
