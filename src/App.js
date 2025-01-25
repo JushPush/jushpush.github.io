@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";
 import React, {useState, useEffect} from 'react';
 import $ from 'jquery'
 import './App.css';
@@ -77,7 +77,7 @@ function App() {
           <h1>Portfolio</h1>
         </div>
       </div>
-      <BrowserRouter>
+      <HashRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
@@ -85,7 +85,7 @@ function App() {
         <Route path="/resume" element={<Resume />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
-      </BrowserRouter>
+      </HashRouter>
       <footer className='py-3 my-4 mt-auto'>
         <ul className='nav justify-content-center border-bottom pb-3 mb-3'>
           <li className='nav-item'><a href='https://substack.com/@karawill' className='btn btn-outline-light btn-floating m-1 socialbutton' role='button'><i className='bi bi-substack'></i></a></li>
