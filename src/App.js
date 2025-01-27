@@ -55,7 +55,7 @@ function App() {
     <div className="App">
       <div className="pageHead" style={{backgroundImage: `url(${backgroundImage})`}} id="banner">
       <Navbar expand="sm">
-          <Container>
+          <Container fluid>
             <Navbar.Brand href="#"><div><img id="git-user-id" src={userIcon} /> JushPush</div></Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarSupportedContent" data-bs-toggle="collapse" />
             <Navbar.Collapse id="basic-navbar-nav">
@@ -67,7 +67,7 @@ function App() {
             </Navbar.Collapse>
             </Container>
         </Navbar>
-        <Container className="header">
+        <Container fluid className="header">
           <h1>Portfolio</h1>
         </Container>
       </div>

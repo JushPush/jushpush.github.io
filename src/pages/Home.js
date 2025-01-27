@@ -2,7 +2,7 @@ import {Container} from 'react-bootstrap'
 
 export default function Home() {
     return (
-        <Container>
+        <Container fluid>
           <h1>Welcome!</h1>
           <p>This is Kara's online portfolio. Here you'll find projects and information.</p>
           <p>Feel free to look around!</p>
