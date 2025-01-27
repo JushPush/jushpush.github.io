@@ -4,6 +4,8 @@ import $ from 'jquery'
 import './App.css';
 import './index.css'
 
+import { Container, Navbar, Nav } from "react-bootstrap";
+
 import Home from './pages/Home.js'
 import Projects from './pages/Projects.js'
 import About from './pages/About.js'
@@ -52,30 +54,22 @@ function App() {
   return (
     <div className="App">
       <div className="pageHead" style={{backgroundImage: `url(${backgroundImage})`}} id="banner">
-        <nav className="navbar navbar-expand-sm">
-          <div className="container-fluid">
-            <a className="navbar-brand" href="#"><div><img id="git-user-id" src={userIcon} /> JushPush</div></a>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button>
-              <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li className="nav-item active">
-                    <a className="nav-link" aria-current="page" href="/">Home</a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="/projects">Projects</a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="/about">About</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-        </nav>
-        <div class="container-fluid header">
+      <Navbar expand="sm">
+          <Container>
+            <Navbar.Brand href="#"><div><img id="git-user-id" src={userIcon} /> JushPush</div></Navbar.Brand>
+            <Navbar.Toggle aria-controls="navbarSupportedContent" data-bs-toggle="collapse" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="me-auto mb-2 mb-lg-0">
+                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/projects">Projects</Nav.Link>
+                <Nav.Link href="/about">About</Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+            </Container>
+        </Navbar>
+        <Container className="header">
           <h1>Portfolio</h1>
-        </div>
+        </Container>
       </div>
       <Routes>
         <Route exact path="/" element={<Home />} />
