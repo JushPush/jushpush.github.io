@@ -8,16 +8,20 @@
 }
 
 .pageHead {
-    background-image: 'banner1.jpg';
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 
+
+
     margin-bottom: 1rem;
     filter: drop-shadow(5px 5px 5px #000000aa);
 
-    border-bottom-right-radius: 3%;
-    border-bottom-left-radius: 3%;
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
+.pageHead::after {
+    background: hsla(180,0%,50%,0.25);
 }
 
 .socialbutton {

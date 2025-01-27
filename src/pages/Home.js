@@ -3,7 +3,8 @@ import {Container} from 'react-bootstrap'
 export default function Home() {
     return (
         <Container fluid>
-          <h1>Welcome!</h1>
+          <h1 className='border-bottom'>Welcome!</h1>
+          <br></br>
           <p>This is Kara's online portfolio. Here you'll find projects and information.</p>
           <p>Feel free to look around!</p>
           <h3>Notice</h3>

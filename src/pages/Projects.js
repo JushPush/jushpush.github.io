@@ -1,10 +1,12 @@
 import {Container} from 'react-bootstrap'
+import ProjectCard from '../elements/ProjectCard'
 
 export default function Projects() {
     return (
         <Container fluid>
-          <h1>This is my Projects Page!</h1>
-          <p>I still have yet to populate this page, however there are projects on my <a href="https://www.github.com/JushPush">Github</a> page. Feel free to check them out!</p>
+          <h1 className='border-bottom'>Projects</h1>
+          <br></br>
+          <ProjectCard title="PyCHAS" subtitle="C/C++ Header Amalgamation Script" text="A script that merges headers in C and C++ using Python" imgsrc='/images/banner1.jpg' />
         </Container>
     )
 }

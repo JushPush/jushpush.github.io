@@ -4,7 +4,7 @@ import $ from 'jquery'
 import './App.css';
 import './index.css'
 
-import { Container, Navbar, Nav } from "react-bootstrap";
+import { Container, Navbar, Nav, Row, Col } from "react-bootstrap";
 
 import Home from './pages/Home.js'
 import Projects from './pages/Projects.js'
@@ -53,17 +53,18 @@ function App() {
     getUser();
   })
   return (
-    <div className="App">
-      <div className="pageHead" style={{backgroundImage: `url(${backgroundImage})`}} id="banner">
+    <Container fluid className="App">
+      <Row className="pageHead" style={{backgroundImage: `url(/images/${backgroundImage})`}} id="banner">
+      <div className="contrastKeeper">
         <Navbar expand="sm">
           <Container fluid>
             <Navbar.Brand href="#"><div><img id="git-user-id" src={userIcon} /> JushPush</div></Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarSupportedContent" data-bs-toggle="collapse" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto mb-2 mb-lg-0">
-                <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="/projects">Projects</Nav.Link>
-                <Nav.Link href="/about">About</Nav.Link>
+                <Nav.Link className="link" href="/">Home</Nav.Link>
+                <Nav.Link className="link" href="/projects">Projects</Nav.Link>
+                <Nav.Link className="link" href="/about">About</Nav.Link>
               </Nav>
             </Navbar.Collapse>
             </Container>
@@ -71,14 +72,18 @@ function App() {
         <Container fluid className="header">
           <h1>Portfolio</h1>
         </Container>
-      </div>
+        </div>
+      </Row>
+      <Row className="body">
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/projects" element={<Projects />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/resume" element={<Resume />} />
+        <Route path='*' element={<PageNotFound />} />
       </Routes>
-      <footer className='py-3 my-4 mt-auto'>
+      </Row>
+      <Row className="footer">
         <ul className='nav justify-content-center border-bottom pb-3 mb-3'>
           <li className='nav-item'><a href='https://substack.com/@karawill' className='btn btn-outline-light btn-floating m-1 socialbutton' role='button'><i className='bi bi-substack'></i></a></li>
           <li className='nav-item'><a href='https://www.instagram.com/karawilsob/' className='btn btn-outline-light btn-floating m-1 socialbutton' role='button'><i className='bi bi-instagram'></i></a></li>
@@ -86,8 +91,9 @@ function App() {
           <li className='nav-item'><a href='https://github.com/JushPush' className='btn btn-outline-light btn-floating m-1 socialbutton' role='button'><i className='bi bi-github'></i></a></li>
         </ul>
         <p className='text-center text-body-secondary'>© 2025 Kara Wilson</p>
-      </footer>
-    </div>
+      </Row>
+      
+    </Container>
   );
 }
 
