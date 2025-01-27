@@ -27,6 +27,7 @@ function App() {
 
   const [userIcon, setUserIcon] = useState('');
 
+  // this is unnecessary network data, it's fine but like it's slowing down the site. Try optimizing it at some point idk.
   function getUser() {
     try {
       $.getJSON('https://api.github.com/users/JushPush', function(data) {
