@@ -4,7 +4,7 @@ import $ from 'jquery'
 import './App.css';
 import './index.css'
 
-import { Container, Navbar, Nav, Row, Col } from "react-bootstrap";
+import { Container, Navbar, Nav, Row, Col, Button } from "react-bootstrap";
 
 import Home from './pages/Home.js'
 import Projects from './pages/Projects.js'
@@ -53,7 +53,7 @@ function App() {
     getUser();
   })
   return (
-    <Container fluid className="App">
+    <Container fluid className="App d-flex flex-column min-vh-100">
       <Row className="pageHead" style={{backgroundImage: `url(/images/${backgroundImage})`}} id="banner">
       <div className="contrastKeeper">
         <Navbar expand="sm">
@@ -83,13 +83,13 @@ function App() {
         <Route path='*' element={<PageNotFound />} />
       </Routes>
       </Row>
-      <Row className="footer">
-        <ul className='nav justify-content-center border-bottom pb-3 mb-3'>
-          <li className='nav-item'><a href='https://substack.com/@karawill' className='btn btn-outline-light btn-floating m-1 socialbutton' role='button'><i className='bi bi-substack'></i></a></li>
-          <li className='nav-item'><a href='https://www.instagram.com/karawilsob/' className='btn btn-outline-light btn-floating m-1 socialbutton' role='button'><i className='bi bi-instagram'></i></a></li>
-          <li className='nav-item'><a href='https://www.linkedin.com/in/kwilson04/' className='btn btn-outline-light btn-floating m-1 socialbutton' role='button'><i className='bi bi-linkedin'></i></a></li>
-          <li className='nav-item'><a href='https://github.com/JushPush' className='btn btn-outline-light btn-floating m-1 socialbutton' role='button'><i className='bi bi-github'></i></a></li>
-        </ul>
+      <Row className="footer py-3 my-4 mt-auto">
+        <Nav className="justify-content-center border-bottom pb-3 mb-3">
+          <Nav.Item><Button href="https://substack.com/@karawill" variant="outline" className="m-1 socialbutton" role="button"><i className="bi bi-substack" /></Button></Nav.Item>
+          <Nav.Item><Button href="https://www.instagram.com/karawilsob/" variant="outline" className="m-1 socialbutton" role="button"><i className="bi bi-instagram" /></Button></Nav.Item>
+          <Nav.Item><Button href="https://www.linkedin.com/in/kwilson04/" variant="outline" className="m-1 socialbutton" role="button"><i className="bi bi-linkedin" /></Button></Nav.Item>
+          <Nav.Item><Button href="https://github.com/JushPush" variant="outline" className="m-1 socialbutton" role="button"><i className="bi bi-github" /></Button></Nav.Item>
+        </Nav>
         <p className='text-center text-body-secondary'>© 2025 Kara Wilson</p>
       </Row>
       

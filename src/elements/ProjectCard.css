@@ -1,9 +1,16 @@
+
 .projectCard {
-    background-color: #2b2b2b;
+    background-color: hsl(0, 0%, 17%);
     width: 18rem;
 }
 .projectCard:hover {
     
+}
+
+@media (max-width: 575.99px) {
+    .projectCard {
+        width: inherit;
+    }
 }
 .projectCard > img {
     height:7rem;
