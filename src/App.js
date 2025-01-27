@@ -54,7 +54,7 @@ function App() {
   return (
     <div className="App">
       <div className="pageHead" style={{backgroundImage: `url(${backgroundImage})`}} id="banner">
-      <Navbar expand="sm">
+        <Navbar expand="sm">
           <Container fluid>
             <Navbar.Brand href="#"><div><img id="git-user-id" src={userIcon} /> JushPush</div></Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarSupportedContent" data-bs-toggle="collapse" />
