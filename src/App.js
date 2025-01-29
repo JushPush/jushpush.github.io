@@ -1,8 +1,10 @@
-import { BrowserRouter, Routes, Route, Switch, HashRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Switch, HashRouter, Link, useNavigate } from "react-router-dom";
 import React, {useState, useEffect} from 'react';
+import { AppContext } from "./Globals.js";
 import $ from 'jquery'
+import axios from 'axios';
 import './App.css';
-import './index.css'
+import './index.css';
 
 import { Container, Navbar, Nav, Row, Col, Button } from "react-bootstrap";
 
@@ -13,7 +15,13 @@ import Resume from './pages/Resume.js'
 import PageNotFound from "./pages/PageNotFound.js";
 
 import 'bootstrap'
-//import 'bootstrap-icons'
+import Blog from "./pages/Blog.js";
+import CreatePost from "./pages/CreatePost.js";
+import Login from "./pages/Login.js";
+import { signOut } from "firebase/auth";
+import { auth, db } from "./firebase-config.js";
+import { collection, getDocs } from "firebase/firestore";
+import BlogPost from "./pages/BlogPost.js";
 
 function App() {
   const banners = [
@@ -24,13 +32,36 @@ function App() {
   ]
 
   const [backgroundImage, setBackgroundImage] = useState('');
-
   const [userIcon, setUserIcon] = useState('');
+  const [isAuth, setIsAuth] = useState(false);
+  const [authUser, setAuthUser] = useState('');
+  const [posts, setPosts] = useState([]);
+
+  const blogsCollectionRef = collection(db, "blogs");
+
+    useEffect(() => {
+        const fetchData = async () => {
+        /*const data = [
+            {id: 0, slug: 'first-post', title: 'First Post', content: 'first'},
+            {id: 1, slug: 'second-post', title: 'Second Post', content: 'second'},
+            {id: 2, slug: 'third-post', title: 'Third Post', content: 'third'},
+            {id: 3, slug: 'fourth-post', title: 'Third Post', content: 'third'},
+            {id: 4, slug: 'fifth-post', title: 'Third Post', content: 'third'},
+            {id: 5, slug: 'sixth-post', title: 'Third Post', content: 'third'},
+        ];*/
+        const data = await getDocs(blogsCollectionRef);
+        setPosts(data.docs.map((doc) => ({...doc.data(), id: doc.id })));
+        //setPosts(data);
+    };
+    fetchData();
+
+    }, []);
 
   // this is unnecessary network data, it's fine but like it's slowing down the site. Try optimizing it at some point idk.
   function getUser() {
     try {
-      $.getJSON('https://api.github.com/users/JushPush', function(data) {
+      // I'm being rate limited
+      /*$.getJSON('https://api.github.com/users/JushPush', function(data) {
         setUserIcon(data.avatar_url);
 
         var link = document.querySelector("link[rel~='icon']");
@@ -40,7 +71,7 @@ function App() {
                 document.head.appendChild(link);
             }
             link.href = data.avatar_url;
-      });
+      });*/
     } catch (err) {
       console.log(err)
     }
@@ -50,21 +81,43 @@ function App() {
     const randomIndex = Math.floor(Math.random() * banners.length);
     setBackgroundImage(banners[randomIndex]);
 
+    if (localStorage.getItem("isAuth")) {
+      setIsAuth(true);
+      if (localStorage.getItem("authUser")) {
+        setAuthUser(localStorage.getItem("authUser"))
+      }
+    }
+
     getUser();
   })
+
+  let navigate = useNavigate();
+
+  const logOutUser = () => {
+    signOut(auth).then(() => {
+      localStorage.clear();
+      setIsAuth(false);
+      setAuthUser('');
+      window.location.pathname = "/";
+    });
+  }
   return (
+    <AppContext.Provider value={{posts}}>
     <Container fluid className="App d-flex flex-column min-vh-100">
       <Row className="pageHead" style={{backgroundImage: `url(/images/${backgroundImage})`}} id="banner">
       <div className="contrastKeeper">
         <Navbar expand="sm">
           <Container fluid>
-            <Navbar.Brand href="#"><div><img id="git-user-id" src={userIcon} /> JushPush</div></Navbar.Brand>
+            <Navbar.Brand href="#" id="brand"><img id="git-user-id" src='/favicon.ico' className="d-inline-block align-top" /></Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarSupportedContent" data-bs-toggle="collapse" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto mb-2 mb-lg-0">
-                <Nav.Link className="link" href="/">Home</Nav.Link>
-                <Nav.Link className="link" href="/projects">Projects</Nav.Link>
-                <Nav.Link className="link" href="/about">About</Nav.Link>
+                <Nav.Link className="link" as={Link} to="/">Home</Nav.Link>
+                <Nav.Link className="link" as={Link} to="/projects">Projects</Nav.Link>
+                <Nav.Link className="link" as={Link} to="/blog">Blog</Nav.Link>
+                <Nav.Link className="link" as={Link} to="/about">About</Nav.Link>
+                {isAuth && authUser == "TSed5n61TXhhpFoK0FnYWCWPvP72" && <Nav.Link className="link" as={Link} to="/createpost">Create Post</Nav.Link> }
+                {!isAuth ? <Nav.Link className="link" as={Link} to="/login">Login</Nav.Link> : <Button onClick={logOutUser}>Logout</Button> }
               </Nav>
             </Navbar.Collapse>
             </Container>
@@ -80,7 +133,12 @@ function App() {
         <Route exact path="/projects" element={<Projects />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/resume" element={<Resume />} />
-        <Route path='*' element={<PageNotFound />} />
+        <Route exact path="/blog" element={<Blog />} />
+        <Route exact path="/createpost" element={<CreatePost authUser={`${authUser}`} />} />
+        <Route exact path="/login" element={<Login setIsAuth={setIsAuth} setAuthUser={setAuthUser} />} />
+        {posts.map((post) => (
+                        <Route key={post.id} path={`/blog/${post.slug}`} element={<BlogPost post={post} />} />
+                    ))}
       </Routes>
       </Row>
       <Row className="footer py-3 my-4 mt-auto">
@@ -94,7 +152,10 @@ function App() {
       </Row>
       
     </Container>
+    </AppContext.Provider>
   );
 }
+
+
 
 export default App;

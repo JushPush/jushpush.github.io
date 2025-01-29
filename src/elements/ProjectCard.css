@@ -1,7 +1,9 @@
 
 .projectCard {
     background-color: hsl(0, 0%, 17%);
-    width: 18rem;
+    
+    margin: 0;
+    margin-bottom: 1rem;
 }
 .projectCard:hover {
     
@@ -9,7 +11,9 @@
 
 @media (max-width: 575.99px) {
     .projectCard {
-        width: inherit;
+
+        margin: 0;
+        margin-bottom: 1rem;
     }
 }
 .projectCard > img {

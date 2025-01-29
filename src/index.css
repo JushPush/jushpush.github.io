@@ -49,7 +49,8 @@
 
 #git-user-id {
     border-radius: 50%;
-    max-height: 2.5rem;
+    max-height: 2.4rem;
+    vertical-align: middle;
 }
 
 .navbar {
