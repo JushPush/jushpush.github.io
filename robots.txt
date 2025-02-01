@@ -1,4 +1,4 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Sitemap: https://spa-github-pages.rafgraph.dev/sitemap.txt
+Sitemap: https://karaw.dev/sitemap.txt
 Disallow:
