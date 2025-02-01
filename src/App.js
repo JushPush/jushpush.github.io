@@ -20,7 +20,7 @@ import CreatePost from "./pages/CreatePost.js";
 import Login from "./pages/Login.js";
 import { signOut } from "firebase/auth";
 import { auth, db } from "./firebase-config.js";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import BlogPost from "./pages/BlogPost.js";
 
 function App() {
@@ -49,7 +49,7 @@ function App() {
             {id: 4, slug: 'fifth-post', title: 'Third Post', content: 'third'},
             {id: 5, slug: 'sixth-post', title: 'Third Post', content: 'third'},
         ];*/
-        const data = await getDocs(blogsCollectionRef);
+        const data = await getDocs(query(blogsCollectionRef, orderBy('date', 'desc')));
         setPosts(data.docs.map((doc) => ({...doc.data(), id: doc.id })));
         //setPosts(data);
     };

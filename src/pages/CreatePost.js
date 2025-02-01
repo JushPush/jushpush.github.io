@@ -31,8 +31,7 @@ export default function CreatePost({ authUser }) {
             }
         }
 
-        const tempdate = new Date();
-        let date = `${tempdate.getUTCMonth() + 1}/${tempdate.getUTCDate()}/${tempdate.getUTCFullYear()}`;
+        const date = new Date();
 
         if (auth.currentUser.email == "dallaswilson028@gmail.com") {
 

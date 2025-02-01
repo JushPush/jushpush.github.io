@@ -21,12 +21,12 @@ Now it's a nice login with Google button, as of now this is useless.
 ## Plans for the Future
 
 On the todo list so far I have
-- [] Sort blog posts in chronological order
-- [] Add support for images in blog posts, including post thumbnails
-- [] Make blog post pages a little more pretty (very vague task)
-- [] Add comments to blog posts
-- [] Work on the resume
-- [] Populate each page with important information about me
+- [x] Sort blog posts in chronological order
+- [ ] Add support for images in blog posts, including post thumbnails
+- [ ] Make blog post pages a little more pretty (very vague task)
+- [ ] Add comments to blog posts
+- [ ] Work on the resume
+- [ ] Populate each page with important information about me
 
 I'll edit this todo list whenever I remember to.
 
