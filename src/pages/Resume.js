@@ -1,5 +1,7 @@
 import {Container} from 'react-bootstrap'
 
+// TODO: Make a cool online resume
+
 export default function Resume() {
     return (
         <Container fluid>

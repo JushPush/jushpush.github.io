@@ -3,3 +3,15 @@
     margin: 0;
     margin-bottom: 1rem;
 }
+
+.adminCard {
+    background-color: #2b2b2b;
+    text-decoration: none;
+
+    transition: background-color 0.25s ease-in-out;
+
+    &:hover {
+        text-size-adjust: 80%;
+        background-color: rgba(0, 0, 0, 0.25);
+    }
+}

@@ -6,7 +6,7 @@ import axios from 'axios';
 import './App.css';
 import './index.css';
 
-import { Container, Navbar, Nav, Row, Col, Button } from "react-bootstrap";
+import { Container, Navbar, Nav, Row, Col, Button, NavDropdown } from "react-bootstrap";
 
 import Home from './pages/Home.js'
 import Projects from './pages/Projects.js'
@@ -98,11 +98,11 @@ function App() {
       localStorage.clear();
       setIsAuth(false);
       setAuthUser('');
-      window.location.pathname = "/";
+      navigate('/');
     });
   }
   return (
-    <AppContext.Provider value={{posts}}>
+    <AppContext.Provider value={{posts, isAuth, authUser}}>
     <Container fluid className="App d-flex flex-column min-vh-100">
       <Row className="pageHead" style={{backgroundImage: `url(/images/${backgroundImage})`}} id="banner">
       <div className="contrastKeeper">
@@ -116,8 +116,11 @@ function App() {
                 <Nav.Link className="link" as={Link} to="/projects">Projects</Nav.Link>
                 <Nav.Link className="link" as={Link} to="/blog">Blog</Nav.Link>
                 <Nav.Link className="link" as={Link} to="/about">About</Nav.Link>
-                {isAuth && authUser == "TSed5n61TXhhpFoK0FnYWCWPvP72" && <Nav.Link className="link" as={Link} to="/createpost">Create Post</Nav.Link> }
-                {!isAuth ? <Nav.Link className="link" as={Link} to="/login">Login</Nav.Link> : <Button onClick={logOutUser}>Logout</Button> }
+
+                <NavDropdown title="Account">
+                  {!isAuth ? <NavDropdown.Item as={Link} to="/login">Login</NavDropdown.Item> : <NavDropdown.Item as={Button} onClick={logOutUser}>Logout</NavDropdown.Item> }
+                  {isAuth && authUser == "TSed5n61TXhhpFoK0FnYWCWPvP72" && <><NavDropdown.Divider /> <NavDropdown.ItemText>Admin</NavDropdown.ItemText> <NavDropdown.Item className="link" as={Link} to="/createpost">CreatePost</NavDropdown.Item> </>}
+                </NavDropdown>
               </Nav>
             </Navbar.Collapse>
             </Container>
